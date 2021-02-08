@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "peebles-humane": {
+      "hosting": {
+        "peebles-humane": [
+          "peebles-humane"
+        ]
+      }
+    }
+  }
+}

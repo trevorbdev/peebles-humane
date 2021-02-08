@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+.spacer {
+    flex: 1 1 auto;
+  }
+.title {
+    color: #ffffff;
+    font-family: 'Chewy', cursive;
+}
+.link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.link {
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300;
+    cursor: pointer;
+    margin-left: 5px;
+}
