@@ -1,6 +1,7 @@
 <nav mat-tab-nav-bar>
-    <a mat-tab-link *ngFor="let link of links"
-       (click)="activeLink = link"
-       [active]="activeLink == link"> {{link}} </a>
-  </nav>
+  <!-- The tab nav renders tabs based on the routes declared in the TypeScript file of the component-->
+       <a mat-tab-link *ngFor="let route of routes"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive" [routerLink]="route.link"> {{route.label}} </a>
+       </nav>
 <router-outlet></router-outlet>

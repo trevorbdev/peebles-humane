@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adoptions.component.scss']
 })
 export class AdoptionsComponent implements OnInit {
-  links = ['Adoption Roster', 'Second', 'Third'];
-  activeLink = this.links[0];
 
-  constructor() { }
+  routes: any[];
+
+  constructor() {
+    this.routes = [
+      {
+        label: 'Adoption Roster',
+        link: 'adoption-roster'
+      }
+    ]
+   }
 
   ngOnInit(): void {
   }
