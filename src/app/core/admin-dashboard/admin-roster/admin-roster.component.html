@@ -1,91 +1,221 @@
 <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
-  
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
-  
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.id}} </td>
-      </ng-container>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.name}} </td>
-      </ng-container>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Breed Column -->
-      <ng-container matColumnDef="breed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Breed </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.breed}} </td>
-      </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.id}} </td>
+    </ng-container>
 
-      <!-- Age Column -->
-      <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.age}} </td>
-      </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.name}} </td>
+    </ng-container>
 
-      <!-- Sex Column -->
-      <ng-container matColumnDef="sex">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sex </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.sex}} </td>
-      </ng-container>
+    <!-- Breed Column -->
+    <ng-container matColumnDef="breed">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Breed </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.breed}} </td>
+    </ng-container>
 
-      <!-- Type Column -->
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.type}} </td>
-      </ng-container>
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.age}} </td>
+    </ng-container>
 
-      <!-- Status Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let dataSource"> {{dataSource.status}} </td>
-      </ng-container>
+    <!-- Sex Column -->
+    <ng-container matColumnDef="sex">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sex </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.sex}} </td>
+    </ng-container>
 
-      <!-- Cover Image Column -->
-      <ng-container matColumnDef="coverimg">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cover Image </th>
-        <td mat-cell *matCellDef="let dataSource"><img [src]="dataSource.coverimg" height="50px;" width="50px;"> </td>
-      </ng-container>
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.type}} </td>
+    </ng-container>
 
-      <!-- Icon Image Column -->
-      <ng-container matColumnDef="iconimg">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Icon Image </th>
-        <td mat-cell *matCellDef="let dataSource"><img [src]="dataSource.iconimg" height="50px;" width="50px;"> </td>
-      </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.weight}} lbs. </td>
+    </ng-container>
 
-      <!-- Photos Column -->
-      <ng-container matColumnDef="photos">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Photos </th>
-        <td mat-cell *matCellDef="let dataSource, let i = index"><a (click)="viewDialog(i)" style="cursor: pointer;">View Photos</a></td>
-      </ng-container>
+    <!-- Detialed Age Column -->
+    <ng-container matColumnDef="detailedage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Detailed Age </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.detailedage}} </td>
+    </ng-container>
 
-      <!-- Edit Column -->
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-        <td mat-cell *matCellDef="let dataSource, let i = index;" class="icon" (click)="editPet(i)"><mat-icon>create</mat-icon></td>
-      </ng-container>
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let dataSource"> {{dataSource.status}} </td>
+    </ng-container>
 
-      <!-- Archive Column -->
-      <ng-container matColumnDef="archive">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-        <td mat-cell *matCellDef="let dataSource, let i = index;" class="icon" (click)="archivePet(i)"><mat-icon>archive</mat-icon></td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="['id', 'name', 'breed', 'age', 'sex', 'type', 'status', 'coverimg', 'iconimg', 'photos', 'edit', 'archive']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'breed', 'age', 'sex', 'type', 'status', 'coverimg', 'iconimg', 'photos', 'edit', 'archive'];"></tr>
-  
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="12">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" #paginator (page)="correctIndex(paginator.pageSize, paginator.pageIndex)"></mat-paginator>
+    <!-- Cover Image Column -->
+    <ng-container matColumnDef="coverimg">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cover Image </th>
+      <td mat-cell *matCellDef="let dataSource"><img [src]="dataSource.coverimg" height="50px;" width="50px;"> </td>
+    </ng-container>
+
+    <!-- Icon Image Column -->
+    <ng-container matColumnDef="iconimg">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Icon Image </th>
+      <td mat-cell *matCellDef="let dataSource"><img [src]="dataSource.iconimg" height="50px;" width="50px;"> </td>
+    </ng-container>
+
+    <!-- Photos Column -->
+    <ng-container matColumnDef="photos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Photos </th>
+      <td mat-cell *matCellDef="let dataSource, let i = index"><a (click)="viewPhotosDialog(i)"
+          style="cursor: pointer;">View Photos</a></td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="desc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let dataSource, let i = index"><a (click)="viewDescDialog(i)"
+          style="cursor: pointer;">View Description</a></td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let dataSource, let i = index;" class="icon" (click)="editPet(i)">
+        <mat-icon>create</mat-icon>
+      </td>
+    </ng-container>
+
+    <!-- Archive Column -->
+    <ng-container matColumnDef="archive">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let dataSource, let i = index;" class="icon" (click)="archivePet(i)">
+        <mat-icon>archive</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row
+      *matHeaderRowDef="['id', 'name', 'breed', 'age', 'sex', 'type', 'weight', 'detailedage', 'status', 'coverimg', 'iconimg', 'photos', 'desc', 'edit', 'archive']">
+    </tr>
+    <tr mat-row
+      *matRowDef="let row; columns: ['id', 'name', 'breed', 'age', 'sex', 'type', 'weight', 'detailedage', 'status', 'coverimg', 'iconimg', 'photos', 'desc', 'edit', 'archive'];">
+    </tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="15">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" #paginator
+    (page)="correctIndex(paginator.pageSize, paginator.pageIndex)"></mat-paginator>
+</div>
+<button mat-fab color="primary" (click)="newPet()" class="mt-4">
+  <mat-icon>add</mat-icon>
+</button>
+<div class="row p-2" *ngIf="editmode || newpet">
+  <div class="col">
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput [(ngModel)]="id" disabled>
+    </mat-form-field>
   </div>
+  <div class="col">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="name">
+    </mat-form-field>
+  </div>
+  <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <mat-select [(ngModel)]="age">
+          <mat-option value="Baby">Baby</mat-option>
+          <mat-option value="Young">Young</mat-option>
+          <mat-option value="Adult">Adult</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <div class="col">
+    <mat-form-field>
+      <mat-label>Breed</mat-label>
+      <input matInput [(ngModel)]="breed">
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <mat-form-field appearance="fill">
+      <mat-label>Sex</mat-label>
+      <mat-select [(ngModel)]="sex">
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="type">
+          <mat-option value="Dog">Dog</mat-option>
+          <mat-option value="Cat">Cat</mat-option>
+          <mat-option value="Rabbit">Rabbit</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="status">
+          <mat-option value="Available">Available</mat-option>
+          <mat-option value="Pending Adoption">Pending Adoption</mat-option>
+          <mat-option value="Adopted">Adopted</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+        <label>Cover Image</label>
+        <input type="file" #coverimg>
+    </div>
+    <div class="col">
+        <label>Icon Image</label>
+        <input type="file" #iconimg>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Weight</mat-label>
+        <input matInput [(ngModel)]="weight">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Detailed Age</mat-label>
+        <input matInput [(ngModel)]="detailedage">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <span (click)="editPhotosDialog()" style="cursor: pointer;">Edit Photos</span>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="savePet(iconimg.value,coverimg.value)">Save</button>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="cancelEditOrNew()">Cancel</button>
+    </div>
+  </div>
+</div>

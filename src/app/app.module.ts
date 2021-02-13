@@ -15,10 +15,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { AdoptionRosterComponent } from './core/adoptions/adoption-roster/adoption-roster.component';
 import { AdoptionsComponent } from './core/adoptions/adoptions.component';
 import { AdminDashboardComponent } from './core/admin-dashboard/admin-dashboard.component';
@@ -53,7 +55,9 @@ import {PhotosDialog} from './core/admin-dashboard/admin-roster/admin-roster.com
     MatSidenavModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
