@@ -7,11 +7,11 @@
     <div class="col">
 <mat-card class="pet-card">
     <mat-card-header>
-        <div mat-card-avatar class="pet-header-image" [style.background-image]="'url(' + pet.coverimg + ')'"></div>
+        <div mat-card-avatar class="pet-header-image" [style.background-image]="'url(' + pet.iconimg + ')'" height="200px" width="400px"></div>
         <mat-card-title>{{pet.name}}</mat-card-title>
         <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="pet.iconimg">
+    <img mat-card-image [src]="pet.coverimg">
     <mat-card-content>
         <div class="row">
             <p><strong>Age:</strong> {{pet.age}}</p>

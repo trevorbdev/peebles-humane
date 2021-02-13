@@ -1,0 +1,22 @@
+<div class="login-form mt-5">
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="example@example.com" #email>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #password>
+            <mat-hint align="start" (click)="forgot(email.value)" style="cursor: pointer;">Forgot password?</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="alert alert-danger mt-4" role="alert" *ngIf="loginerror">
+        Invalid email or password
+      </div>
+    <div class="mx-auto">
+        <button mat-raised-button color="primary" (click)="login(email.value, password.value)"
+            class="mt-4">Login</button>
+    </div>
+    </div>

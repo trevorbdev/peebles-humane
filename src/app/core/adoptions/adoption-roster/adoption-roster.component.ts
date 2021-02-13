@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
-export interface Pet {
-  name: string;
-  age: string;
-  breed: string;
-  photos: string[];
-  sex: string;
-  type: string;
-  coverimg: string;
-  iconimg: string;
-}
+import { Pet } from 'src/app/core/models/pet';
 
 @Component({
   selector: 'app-adoption-roster',
