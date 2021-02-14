@@ -1,29 +1,26 @@
-<div class="mx-auto" style="width: 200px !important;">
-
-</div>
 <div class="mx-auto">
-<div class="p-4" *ngFor="let pet of pets | async, let i = index">
-    <div class="row" *ngIf="(i % 4 == 0)">
-    <div class="col">
-<mat-card class="pet-card">
-    <mat-card-header>
-        <div mat-card-avatar class="pet-header-image" [style.background-image]="'url(' + pet.iconimg + ')'" height="200px" width="400px"></div>
-        <mat-card-title>{{pet.name}}</mat-card-title>
-        <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="pet.coverimg">
-    <mat-card-content>
-        <div class="row">
-            <p><strong>Age:</strong> {{pet.age}}</p>
-            <p><strong>Sex:</strong> {{pet.sex}}</p>
-            <p><strong>Type:</strong> {{pet.type}}</p>
+    <div class="row p-4">
+        <div class="col-sm-4" *ngFor="let pet of pets | async, let i = index">
+            <mat-card class="pet-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="pet-header-image" [style.background-image]="'url(' + pet.iconimg + ')'"
+                        height="200px" width="400px"></div>
+                    <mat-card-title>{{pet.name}}</mat-card-title>
+                    <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="pet.coverimg">
+                <mat-card-content>
+                    <div class="row">
+                        <p><strong>Age:</strong> {{pet.age}}</p>
+                        <p><strong>Sex:</strong> {{pet.sex}}</p>
+                        <p><strong>Type:</strong> {{pet.type}}</p>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button *ngIf="pet.status == 'Available'">LEARN ABOUT ME</button>
+                    <button mat-button *ngIf="pet.status == 'Pending Adoption'" disabled>PENDING ADOPTION</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button *ngIf="pet.status == 'Available'">LEARN ABOUT ME</button>
-        <button mat-button *ngIf="pet.status == 'Pending Adoption'" disabled>PENDING ADOPTION</button>
-    </mat-card-actions>
-</mat-card>
-</div>
-</div>
+    </div>
 </div>

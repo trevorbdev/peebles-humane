@@ -11,6 +11,7 @@ import { Pet } from 'src/app/core/models/pet';
 export class AdoptionRosterComponent implements OnInit {
   petsCollection: AngularFirestoreCollection<Pet>;
   pets: Observable<Pet[]>;
+  petarr!: Pet[];
 
   constructor(private afs: AngularFirestore) {
     this.petsCollection = afs.collection<Pet>('adoptionroster');

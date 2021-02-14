@@ -1,3 +1,3 @@
 export interface Count {
-    count: string;
+    count: string | undefined;
 }

@@ -6,13 +6,20 @@ import { Count } from 'src/app/core/models/count';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 export interface PhotosDialogData {
   photos: any[];
   index: any;
+}
+
+export interface PhotosEditDialogData {
+  photos: any[];
+  index: any;
+  id: any;
+  name: any;
 }
 
 export interface DescDialogData {
@@ -40,6 +47,7 @@ export class AdminRosterComponent implements OnInit {
   name: string | undefined;
   age: string | undefined;
   breed: string | undefined;
+  photos: string[] | undefined = [];
   sex: string | undefined;
   type: string | undefined;
   status: string | undefined;
@@ -53,7 +61,7 @@ export class AdminRosterComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private afs: AngularFirestore, public dialog: MatDialog, private _snackBar: MatSnackBar) {
+  constructor(private afs: AngularFirestore, public dialog: MatDialog, private _snackBar: MatSnackBar, private storage: AngularFireStorage) {
     this.petsCollection = afs.collection<Pet>('adoptionroster');
     this.pets = this.petsCollection.valueChanges();
     this.pets.subscribe((data) => {
@@ -90,6 +98,7 @@ export class AdminRosterComponent implements OnInit {
     this.name = this.petarr[index].name;
     this.age = this.petarr[index].age;
     this.breed = this.petarr[index].breed;
+    this.photos = this.petarr[index].photos;
     this.sex = this.petarr[index].sex;
     this.type = this.petarr[index].type;
     this.status = this.petarr[index].status;
@@ -121,10 +130,123 @@ export class AdminRosterComponent implements OnInit {
     this.description = '';
     this.weight = 0;
     this.detailedage = '';
+    this.editindex = Number(this.id);
   }
 
   savePet(iconimg: any, coverimg: any) {
-
+    if (iconimg != null && coverimg != null) {
+    var filePathic = '/pets/' + this.id + '/' + this.name + 'Icon.jpg';
+    var gsrefic = 'gs://peebles-humane.appspot.com/' + 'pets/' + this.id + '/' + this.name + 'Icon.jpg';
+    this.storage.upload(filePathic, iconimg).then((success) => {
+    this.storage.refFromURL(gsrefic).getDownloadURL().subscribe(iurl => {
+      var filePathcv = '/pets/' + this.id + '/' + this.name + 'Cover.jpg';
+      var gsrefcv = 'gs://peebles-humane.appspot.com/' + 'pets/' + this.id + '/' + this.name + 'Cover.jpg';
+      this.storage.upload(filePathcv, coverimg).then((success) => {
+      this.storage.refFromURL(gsrefcv).getDownloadURL().subscribe(curl => {
+        this.petsCollection.doc(this.id).set({
+          id: this.id,
+          name: this.name,
+          age: this.age,
+          breed: this.breed,
+          photos: this.photos,
+          sex: this.sex,
+          type: this.type,
+          status: this.status,
+          coverimg: curl,
+          iconimg: iurl,
+          description: this.description,
+          weight: this.weight,
+          detailedage: this.detailedage
+        })
+      });
+    }, (reason) => {
+      this._snackBar.open("Cover image upload failed", "", {
+        duration: 5000
+      });
+    });
+    });
+    }, (reason) => {
+      this._snackBar.open("Icon image upload failed", "", {
+        duration: 5000
+      });
+    });
+  }
+  if (iconimg == null && coverimg != null) {
+    var filePathcv = '/pets/' + this.id + '/' + this.name + 'Cover.jpg';
+    var gsrefcv = 'gs://peebles-humane.appspot.com/' + 'pets/' + this.id + '/' + this.name + 'Cover.jpg';
+    this.storage.upload(filePathcv, coverimg).then((success) => {
+    this.storage.refFromURL(gsrefcv).getDownloadURL().subscribe(curl => {
+      this.petsCollection.doc(this.id).set({
+        id: this.id,
+        name: this.name,
+        age: this.age,
+        breed: this.breed,
+        photos: this.photos,
+        sex: this.sex,
+        type: this.type,
+        status: this.status,
+        coverimg: curl,
+        iconimg: this.petarr[this.editindex].iconimg,
+        description: this.description,
+        weight: this.weight,
+        detailedage: this.detailedage
+      })
+    });
+  }, (reason) => {
+    this._snackBar.open("Cover image upload failed", "", {
+      duration: 5000
+    });
+  });
+  }
+  if (iconimg != null && coverimg == null) {
+    var filePathic = '/pets/' + this.id + '/' + this.name + 'Icon.jpg';
+    var gsrefic = 'gs://peebles-humane.appspot.com/' + 'pets/' + this.id + '/' + this.name + 'Icon.jpg';
+    this.storage.upload(filePathic, iconimg).then((success) =>{
+    this.storage.refFromURL(gsrefic).getDownloadURL().subscribe(iurl => {
+      this.petsCollection.doc(this.id).set({
+        id: this.id,
+        name: this.name,
+        age: this.age,
+        breed: this.breed,
+        photos: this.photos,
+        sex: this.sex,
+        type: this.type,
+        status: this.status,
+        coverimg: this.petarr[this.editindex].coverimg,
+        iconimg: iurl,
+        description: this.description,
+        weight: this.weight,
+        detailedage: this.detailedage
+      })
+    });
+    }, (reason) => {
+      this._snackBar.open("Icon image upload failed", "", {
+        duration: 5000
+      });
+    });
+  }
+  if (iconimg == null && coverimg == null) {
+    this.petsCollection.doc(this.id).set({
+      id: this.id,
+      name: this.name,
+      age: this.age,
+      breed: this.breed,
+      photos: this.photos,
+      sex: this.sex,
+      type: this.type,
+      status: this.status,
+      coverimg: this.petarr[this.editindex].coverimg,
+      iconimg: this.petarr[this.editindex].iconimg,
+      description: this.description,
+      weight: this.weight,
+      detailedage: this.detailedage
+    })
+  }
+    if (this.newpet == true) {
+      this.countCollection.doc("adoptionrostercount").set({
+        count: this.id
+      })
+    }
   }
 
   archivePet(index: any) {
@@ -152,6 +274,32 @@ export class AdminRosterComponent implements OnInit {
   }
 
   editPhotosDialog() {
+    if (this.newpet == false) {
+      var dialogRef = this.dialog.open(PhotosEditDialog, {
+        data: {
+          photos: this.petarr[this.editindex].photos,
+          index: this.editindex,
+          id: this.id,
+          name: this.name
+        }
+      })
+      dialogRef.afterClosed().subscribe((result) => {
+        this.photos = result.data;
+      })
+    }
+    else {
+      var dialogRef = this.dialog.open(PhotosEditDialog, {
+        data: {
+          photos: [""],
+          index: this.editindex,
+          id: this.id,
+          name: this.name
+        }
+      })
+      dialogRef.afterClosed().subscribe((result) => {
+        this.photos = result.data;
+      })
+    }
 
   }
 
@@ -175,20 +323,6 @@ export class PhotosDialog {
       this.petarr = data;
     });
   }
-
-  deletePhoto(index: any) {
-    this.data.photos[index] = null;
-    this.petsCollection.doc(this.petarr[this.data.index].id).update({photos: this.data.photos}).then((success) => {
-      this._snackBar.open("Photo deleted", "", {
-        duration: 5000,
-      })
-    }, (reason) => {
-      console.log(reason);
-      this._snackBar.open("Error deleting photo", "", {
-        duration: 5000,
-      })
-    })
-  }
 }
 
 @Component({
@@ -201,5 +335,56 @@ export class DescriptionDialog {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DescDialogData, private afs: AngularFirestore) {
     this.petdescription = this.data.description;
+  }
+}
+
+@Component({
+  selector: 'photos-edit-dialog',
+  templateUrl: 'photos-edit-dialog.html',
+})
+export class PhotosEditDialog {
+  petsCollection: AngularFirestoreCollection<Pet>;
+  petarr!: Pet[];
+  pets: Observable<Pet[]>;
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: PhotosEditDialogData, private afs: AngularFirestore, private _snackBar: MatSnackBar, private storage: AngularFireStorage,
+    private dialogRef: MatDialogRef<PhotosEditDialog>) {
+    this.petsCollection = afs.collection<Pet>('adoptionroster');
+    this.pets = this.petsCollection.valueChanges();
+    this.pets.subscribe((data) => {
+      this.petarr = data;
+    });
+    if (this.data.photos[0] == "") {
+      this.data.photos.pop();
+    }
+  }
+
+  deletePhoto(index: any) {
+    this.data.photos.splice(index, 1);
+    this.petsCollection.doc(this.petarr[this.data.index].id).update({ photos: this.data.photos }).then((success) => {
+      this._snackBar.open("Photo deleted", "", {
+        duration: 5000,
+      })
+    }, (reason) => {
+      console.log(reason);
+      this._snackBar.open("Error deleting photo", "", {
+        duration: 5000,
+      })
+    })
+  }
+
+  addPhoto(file: any) {
+    var filePath = '/pets/' + this.data.id + '/' + this.data.name + this.data.photos.length + '.jpg';
+    this.storage.upload(filePath, file).then((file) => {
+      var gsref = 'gs://peebles-humane.appspot.com/' + file.metadata.fullPath;
+      this.storage.refFromURL(gsref).getDownloadURL().subscribe((url) => {
+        this.data.photos.push(url);
+      });
+    })
+  }
+
+  savePhotos() {
+    this.dialogRef.close({ data: this.data.photos });
   }
 }

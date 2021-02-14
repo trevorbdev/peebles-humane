@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //Angular Material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -28,6 +29,8 @@ import { LoginComponent } from './core/login/login.component';
 import { AdminRosterComponent } from './core/admin-dashboard/admin-roster/admin-roster.component';
 import { AdminControlComponent } from './core/admin-dashboard/admin-control/admin-control.component';
 import {PhotosDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
+import {DescriptionDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
+import {PhotosEditDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import {PhotosDialog} from './core/admin-dashboard/admin-roster/admin-roster.com
     LoginComponent,
     AdminRosterComponent,
     AdminControlComponent,
-    PhotosDialog
+    PhotosDialog,
+    DescriptionDialog,
+    PhotosEditDialog
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import {PhotosDialog} from './core/admin-dashboard/admin-roster/admin-roster.com
     MatDialogModule,
     MatPaginatorModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

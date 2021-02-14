@@ -212,7 +212,7 @@
       <span (click)="editPhotosDialog()" style="cursor: pointer;">Edit Photos</span>
     </div>
     <div class="col">
-      <button mat-raised-button color="primary" (click)="savePet(iconimg.value,coverimg.value)">Save</button>
+      <button mat-raised-button color="primary" (click)="savePet(iconimg.files![0],coverimg.files![0])">Save</button>
     </div>
     <div class="col">
       <button mat-raised-button color="primary" (click)="cancelEditOrNew()">Cancel</button>
