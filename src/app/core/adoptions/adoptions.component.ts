@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-adoptions',
@@ -9,7 +10,7 @@ export class AdoptionsComponent implements OnInit {
 
   routes: any[];
 
-  constructor() {
+  constructor(private auth: AngularFireAuth) {
     this.routes = [
       {
         label: 'Adoption Roster',

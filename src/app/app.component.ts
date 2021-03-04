@@ -8,7 +8,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AppComponent {
 
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth) {
+  }
   title = 'peebles-humane';
 
   logout() {

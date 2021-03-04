@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ReactiveFormsModule } from '@angular/forms'
 
 //Angular Material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -17,6 +18,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +37,8 @@ import { AdminControlComponent } from './core/admin-dashboard/admin-control/admi
 import {PhotosDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
 import {DescriptionDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
 import {PhotosEditDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
+import { PetDetailComponent } from './core/pet-detail/pet-detail.component';
+import { AdminAppComponent } from './core/admin-dashboard/admin-app/admin-app.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +51,9 @@ import {PhotosEditDialog} from './core/admin-dashboard/admin-roster/admin-roster
     AdminControlComponent,
     PhotosDialog,
     DescriptionDialog,
-    PhotosEditDialog
+    PhotosEditDialog,
+    PetDetailComponent,
+    AdminAppComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +73,13 @@ import {PhotosEditDialog} from './core/admin-dashboard/admin-roster/admin-roster
     MatPaginatorModule,
     FormsModule,
     MatSelectModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo, hasCustomClaim, redirectL
 import { canActivate } from '@angular/fire/auth-guard';
 import { Observable, of, pipe, UnaryFunction } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
+import { PetDetailComponent } from './core/pet-detail/pet-detail.component';
 
 const redirectLoggedInToAdmin = () => redirectLoggedInTo(['admin']);
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'roster', component: AdminRosterComponent},
   {path: 'admins', component: AdminControlComponent}
 ]},
+{path: 'petdetail', component: PetDetailComponent},
 {path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToAdmin}},
 {path: 'adoptions', component: AdoptionsComponent,
 children: [{path: '', redirectTo: 'adoption-roster', pathMatch: 'full'},

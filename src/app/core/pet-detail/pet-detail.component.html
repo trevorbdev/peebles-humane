@@ -1,0 +1,267 @@
+<div id="carouselControls" class="carousel slide" data-bs-ride="carousel" style="margin: auto;">
+  <div class="carousel-inner">
+    <div *ngFor="let photo of pet.photos, let i = index" [ngClass]="{'carousel-item': true, 'active': i == 0}">
+      <img [src]="photo" class="d-block w-50" style="margin: auto;">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev"
+    style="background-color: #212121;">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next"
+    style="background-color: #212121;">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="p-3">
+  <h1>My name is {{pet.name}}!</h1>
+  <mat-divider></mat-divider>
+  <div class="row p-2">
+    <div class="col p-2">
+      <h3><strong>Breed: </strong>{{pet.breed}}</h3>
+      <h3><strong>Age: </strong>{{pet.age}}</h3>
+    </div>
+    <div class="col p-2">
+      <h3><strong>Detailed Age: </strong> {{pet.detailedage}}</h3>
+      <h3><strong>Weight: </strong> {{pet.weight}} lbs.</h3>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row p-2">
+      <h1>My Story</h1>
+      <p>{{pet.description}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="p-2">
+      <h1>Adoption Application</h1>
+      <form [formGroup]="AppForm" (ngSubmit)="openCalendly()">
+      <div class="row">
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Ex. Lisa" formControlName="firstname" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Ex. Parker" formControlName="lastname" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. example@example.com" formControlName="email" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>DLN</mat-label>
+            <input matInput formControlName="dln" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field appearance="fill">
+            <mat-label>Birthday</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthday" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Spouse/Partner First Name</mat-label>
+            <input matInput formControlName="spousefirst">
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Spouse/Partner Last Name</mat-label>
+            <input matInput formControlName="spouselast">
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2">
+          <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" required>
+              <mat-option value="AL">Alabama</mat-option>
+              <mat-option value="AK">Alaska</mat-option>
+              <mat-option value="AZ">Arizona</mat-option>
+              <mat-option value="AR">Arkansas</mat-option>
+              <mat-option value="CA">California</mat-option>
+              <mat-option value="CO">Colorado</mat-option>
+              <mat-option value="CT">Connecticut</mat-option>
+              <mat-option value="DE">Delaware</mat-option>
+              <mat-option value="FL">Florida</mat-option>
+              <mat-option value="GA">Georgia</mat-option>
+              <mat-option value="HI">Hawaii</mat-option>
+              <mat-option value="ID">Idaho</mat-option>
+              <mat-option value="IL">Illinois</mat-option>
+              <mat-option value="IN">Indiana</mat-option>
+              <mat-option value="IA">Iowa</mat-option>
+              <mat-option value="KS">Kansas</mat-option>
+              <mat-option value="KY">Kentucky</mat-option>
+              <mat-option value="LA">Louisiana</mat-option>
+              <mat-option value="ME">Maine</mat-option>
+              <mat-option value="MD">Maryland</mat-option>
+              <mat-option value="MA">Massachusetts</mat-option>
+              <mat-option value="MI">Michigan</mat-option>
+              <mat-option value="MN">Minnesota</mat-option>
+              <mat-option value="MS">Mississippi</mat-option>
+              <mat-option value="MO">Missouri</mat-option>
+              <mat-option value="MT">Montana</mat-option>
+              <mat-option value="NE">Nebraska</mat-option>
+              <mat-option value="NV">Nevada</mat-option>
+              <mat-option value="NH">New Hampshire</mat-option>
+              <mat-option value="NJ">New Jersey</mat-option>
+              <mat-option value="NM">New Mexico</mat-option>
+              <mat-option value="NY">New York</mat-option>
+              <mat-option value="NC">North Carolina</mat-option>
+              <mat-option value="ND">North Dakota</mat-option>
+              <mat-option value="OH">Ohio</mat-option>
+              <mat-option value="OK">Oklahoma</mat-option>
+              <mat-option value="OR">Oregon</mat-option>
+              <mat-option value="PA">Pennsylvania</mat-option>
+              <mat-option value="RI">Rhode Island</mat-option>
+              <mat-option value="SC">South Carolina</mat-option>
+              <mat-option value="SD">South Dakota</mat-option>
+              <mat-option value="TN">Tennessee</mat-option>
+              <mat-option value="TX">Texas</mat-option>
+              <mat-option value="UT">Utah</mat-option>
+              <mat-option value="VT">Vermont</mat-option>
+              <mat-option value="VA">Virginia</mat-option>
+              <mat-option value="WA">Washington</mat-option>
+              <mat-option value="WV">West Virginia</mat-option>
+              <mat-option value="WI">Wisconsin</mat-option>
+              <mat-option value="WY">Wyoming</mat-option>
+              <mat-option value="DC">Washington DC</mat-option>
+              <mat-option value="AE">ARMED FORCES AFRICA \ CANADA \ EUROPE \ MIDDLE EAST</mat-option>
+              <mat-option value="AA">ARMED FORCES AMERICA (EXCEPT CANADA)</mat-option>
+              <mat-option value="AP">ARMED FORCES PACIFIC</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field>
+            <mat-label>Zip</mat-label>
+            <input matInput formControlName="zip" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field appearance="fill">
+            <mat-label>Home</mat-label>
+            <mat-select formControlName="home" required #home>
+              <mat-option value="Own">Own</mat-option>
+              <mat-option value="Rent">Rent</mat-option>
+              <mat-option value="Rent to Own">Rent to Own</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col p-2" *ngIf="(home.value == 'Rent') || (home.value == 'Rent to Own')">
+          <mat-form-field>
+            <mat-label>Landlord Name and Phone Number</mat-label>
+            <input matInput formControlName="landlord" required>
+          </mat-form-field>
+        </div>
+        <div class="col p-2">
+          <mat-form-field appearance="fill">
+            <mat-label>Home Type</mat-label>
+            <mat-select formControlName="hometype" required>
+              <mat-option value="House">House</mat-option>
+              <mat-option value="Mobile">Mobile</mat-option>
+              <mat-option value="Apartment">Apartment</mat-option>
+              <mat-option value="Townhome">Townhome</mat-option>
+              <mat-option value="Condo">Condo</mat-option>
+              <mat-option value="Duplex">Duplex</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Are you moving in the near future? If yes, when?</mat-label>
+            <input matInput formControlName="moving" required>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Please name all residents in your household</mat-label>
+            <textarea matInput formControlName="residents" required></textarea>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>How often do children visit the home?</mat-label>
+            <mat-select formControlName="children" required>
+              <mat-option value="Daily">Daily</mat-option>
+              <mat-option value="Sometimes">Sometimes</mat-option>
+              <mat-option value="Rarely">Rarely</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Please list all current animals in your household</mat-label>
+            <textarea matInput formControlName="animals" required></textarea>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="col p-2">
+            <mat-checkbox formControlName="laws" required>Are you aware of the city and county laws regarding pets,
+              including city licensing and leash laws?</mat-checkbox>
+          </div>
+          <div class="col p-2">
+            <mat-checkbox formControlName="adjust" required>It may take your new pet six weeks or longer to adjust to your
+              home, usually longer if other pets are involved. Are you prepared to allow this much time to adjust?
+            </mat-checkbox>
+          </div>
+          <div class="col p-2">
+            <mat-checkbox formControlName="behavior" required>Do you understand that an animal's behavior in the shelter may
+              be different than behaviors exhibited at home?</mat-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <mat-checkbox formControlName="accept" class="accept" required>By checking this box, I certify that the
+            information I have given is true and that any misrepresentation of facts may result in my losing the
+            privilege of adopting a pet.<br>
+            I understand the Helping Hands Humane Society has the right to deny my request to adopt an animal.<br>
+            I authorize the investigation of all statements in this application.<br>
+            I authorize the request of all veterinarian records by the Helping Hands Humane Society.<br>
+            I understand this application is the property of the Helping Hands Humane Society.</mat-checkbox>
+        </div>
+        <div class="row p-4">
+        <button mat-raised-button type="submit" color="primary" [disabled]="AppForm.invalid">Schedule Visit</button>
+        </div>
+        </form>
+        <div class="row p-2" *ngIf="calendlyview">
+          <p style="text-align: center; color: #ffffff; background-color: #000000;">*Please select a meeting time to
+            submit your application*</p>
+          <div #container class="calendly-inline-widget" style="min-width:320px;height:700px;" data-auto-load="false" [hidden]="calendlyview">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

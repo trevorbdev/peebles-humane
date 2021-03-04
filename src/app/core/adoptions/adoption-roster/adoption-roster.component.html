@@ -17,7 +17,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button *ngIf="pet.status == 'Available'">LEARN ABOUT ME</button>
+                    <button mat-button *ngIf="pet.status == 'Available'" (click)="petDetails(pet.id)">LEARN ABOUT ME</button>
                     <button mat-button *ngIf="pet.status == 'Pending Adoption'" disabled>PENDING ADOPTION</button>
                 </mat-card-actions>
             </mat-card>
