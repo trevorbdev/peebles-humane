@@ -11,5 +11,7 @@ export interface Pet {
     iconimg: string | undefined;
     description: string | undefined;
     weight: number | undefined;
+    price: number | undefined;
     detailedage: string | undefined;
+    adoptedby: string | undefined;
 }

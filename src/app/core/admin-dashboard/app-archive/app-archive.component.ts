@@ -7,11 +7,11 @@ import { Count } from 'src/app/core/models/count';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-app',
-  templateUrl: './admin-app.component.html',
-  styleUrls: ['./admin-app.component.scss']
+  selector: 'app-app-archive',
+  templateUrl: './app-archive.component.html',
+  styleUrls: ['./app-archive.component.scss']
 })
-export class AdminAppComponent implements OnInit {
+export class AppArchiveComponent implements OnInit {
 
   correctindex: any = 0;
   dataSource!: MatTableDataSource<App>;
@@ -25,7 +25,7 @@ export class AdminAppComponent implements OnInit {
   constructor(private afs: AngularFirestore, private _snackBar: MatSnackBar) {
     this.appsCollection = afs.collection<App>('applications');
     this.appsArchiveCollection = afs.collection<App>('apparchive');
-    this.apps = this.appsCollection.valueChanges();
+    this.apps = this.appsArchiveCollection.valueChanges();
     this.apps.subscribe((data) => {
       this.apparr = data;
       this.dataSource = new MatTableDataSource(this.apparr);
@@ -52,11 +52,11 @@ export class AdminAppComponent implements OnInit {
     }
   }
 
-  archiveApp(index: any) {
+  unarchiveApp(index: any) {
     index = index + this.correctindex;
-    var confirm = window.confirm("Confirm archive");
+    var confirm = window.confirm("Confirm unarchive");
     if (confirm == true) {
-      this.appsArchiveCollection.doc(this.apparr[index].id).set({
+      this.appsCollection.doc(this.apparr[index].id).set({
         id: this.apparr[index].id,
         petid: this.apparr[index].petid,
         event_url: this.apparr[index].event_url,
@@ -82,7 +82,7 @@ export class AdminAppComponent implements OnInit {
         status: this.apparr[index].status,
         appdate: this.apparr[index].appdate
       })
-      this.appsCollection.doc(this.apparr[index].id).delete();
+      this.appsArchiveCollection.doc(this.apparr[index].id).delete();
     }
   }
 

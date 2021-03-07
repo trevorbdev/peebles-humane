@@ -1,0 +1,80 @@
+<div class="mx-auto" style="width: 1400px;">
+  <div class="row p-2">
+    <h1>Application Lookup</h1>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. example@example.com" [(ngModel)]="email">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="lookupByEmail()">Search</button>
+      </div>
+      <br>
+      <h1 *ngIf="showTables">Current Applications</h1>
+      <br>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="showTables">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- App By Column -->
+        <ng-container matColumnDef="appby">
+          <th mat-header-cell *matHeaderCellDef> Application By </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.firstname}} {{dataSource.lastname}} </td>
+        </ng-container>
+      
+        <!-- Pet Inq Column -->
+        <ng-container matColumnDef="petinq">
+          <th mat-header-cell *matHeaderCellDef> Pet Inquired </th>
+          <td mat-cell *matCellDef="let dataSource"> {{lookupPetName(dataSource.petid)}} </td>
+        </ng-container>
+      
+        <!-- App Status Column -->
+        <ng-container matColumnDef="appstatus">
+          <th mat-header-cell *matHeaderCellDef> Application Status </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.status}} </td>
+        </ng-container>
+      
+        <!-- App Date Column -->
+        <ng-container matColumnDef="appdate">
+          <th mat-header-cell *matHeaderCellDef> Application Date </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.appdate | date: 'MM-dd-YYYY'}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="['appby', 'petinq', 'appstatus', 'appdate']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['appby', 'petinq', 'appstatus', 'appdate'];"></tr>
+      </table>
+      <br>
+      <h1 *ngIf="showTables">Past Applications</h1>
+      <br>
+      <table mat-table [dataSource]="dataSourceArchive" class="mat-elevation-z8" *ngIf="showTables">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- App By Column -->
+        <ng-container matColumnDef="appby">
+          <th mat-header-cell *matHeaderCellDef> Application By </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.firstname}} {{dataSource.lastname}} </td>
+        </ng-container>
+      
+        <!-- Pet Inq Column -->
+        <ng-container matColumnDef="petinq">
+          <th mat-header-cell *matHeaderCellDef> Pet Inquired </th>
+          <td mat-cell *matCellDef="let dataSource"> {{lookupPetName(dataSource.petid)}} </td>
+        </ng-container>
+      
+        <!-- App Status Column -->
+        <ng-container matColumnDef="appstatus">
+          <th mat-header-cell *matHeaderCellDef> Application Status </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.status}} </td>
+        </ng-container>
+      
+        <!-- App Date Column -->
+        <ng-container matColumnDef="appdate">
+          <th mat-header-cell *matHeaderCellDef> Application Date </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.appdate | date: 'MM-dd-YYYY'}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="['appby', 'petinq', 'appstatus', 'appdate']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['appby', 'petinq', 'appstatus', 'appdate'];"></tr>
+      </table>   
+</div>

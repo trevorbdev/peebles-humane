@@ -38,6 +38,7 @@ export class AdminRosterComponent implements OnInit {
   dataSource!: MatTableDataSource<Pet>;
   petarr!: Pet[];
   petsCollection: AngularFirestoreCollection<Pet>;
+  petsArchiveCollection: AngularFirestoreCollection<Pet>;
   countCollection: AngularFirestoreCollection<Count>;
   countdata!: Count | undefined;
   pets: Observable<Pet[]>;
@@ -55,6 +56,7 @@ export class AdminRosterComponent implements OnInit {
   iconimg: string | undefined;
   description: string | undefined;
   weight: number | undefined;
+  price: number | undefined;
   detailedage: string | undefined;
   editindex: any;
 
@@ -63,6 +65,7 @@ export class AdminRosterComponent implements OnInit {
 
   constructor(private afs: AngularFirestore, public dialog: MatDialog, private _snackBar: MatSnackBar, private storage: AngularFireStorage) {
     this.petsCollection = afs.collection<Pet>('adoptionroster');
+    this.petsArchiveCollection = afs.collection<Pet>('petarchive');
     this.pets = this.petsCollection.valueChanges();
     this.pets.subscribe((data) => {
       this.petarr = data;
@@ -156,7 +159,9 @@ export class AdminRosterComponent implements OnInit {
           iconimg: iurl,
           description: this.description,
           weight: this.weight,
-          detailedage: this.detailedage
+          price: this.price,
+          detailedage: this.detailedage,
+          adoptedby: '',
         })
       });
     }, (reason) => {
@@ -189,7 +194,9 @@ export class AdminRosterComponent implements OnInit {
         iconimg: this.petarr[this.editindex].iconimg,
         description: this.description,
         weight: this.weight,
-        detailedage: this.detailedage
+        price: this.price,
+        detailedage: this.detailedage,
+        adoptedby: ''
       })
     });
   }, (reason) => {
@@ -216,7 +223,9 @@ export class AdminRosterComponent implements OnInit {
         iconimg: iurl,
         description: this.description,
         weight: this.weight,
-        detailedage: this.detailedage
+        price: this.price,
+        detailedage: this.detailedage,
+        adoptedby: ''
       })
     });
     }, (reason) => {
@@ -239,7 +248,9 @@ export class AdminRosterComponent implements OnInit {
       iconimg: this.petarr[this.editindex].iconimg,
       description: this.description,
       weight: this.weight,
-      detailedage: this.detailedage
+      price: this.price,
+      detailedage: this.detailedage,
+      adoptedby: ''
     })
   }
     if (this.newpet == true) {
@@ -251,6 +262,27 @@ export class AdminRosterComponent implements OnInit {
 
   archivePet(index: any) {
     index = index + this.correctindex;
+    var confirm = window.confirm("Confirm archive");
+    if (confirm == true) {
+    this.petsArchiveCollection.doc(this.petarr[index].id).set({
+      id: this.petarr[index].id,
+      name: this.petarr[index].name,
+      age: this.petarr[index].age,
+      breed: this.petarr[index].breed,
+      photos: this.petarr[index].photos,
+      sex: this.petarr[index].sex,
+      type: this.petarr[index].type,
+      status: this.petarr[index].status,
+      coverimg: this.petarr[index].coverimg,
+      iconimg: this.petarr[index].iconimg,
+      description: this.petarr[index].description,
+      weight: this.petarr[index].weight,
+      price: this.petarr[index].price,
+      detailedage: this.petarr[index].detailedage,
+      adoptedby: this.petarr[index].adoptedby
+    })
+    this.petsCollection.doc(this.petarr[index].id).delete();
+  }
   }
 
   viewPhotosDialog(index: any) {

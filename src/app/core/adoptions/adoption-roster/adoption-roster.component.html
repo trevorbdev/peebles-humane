@@ -1,6 +1,6 @@
 <div class="mx-auto">
     <div class="row p-4">
-        <div class="col-sm-4" *ngFor="let pet of pets | async, let i = index">
+        <div class="col-sm-4" *ngFor="let pet of pets | async, let i = index" [hidden]="pet.status == 'Adopted'">
             <mat-card class="pet-card">
                 <mat-card-header>
                     <div mat-card-avatar class="pet-header-image" [style.background-image]="'url(' + pet.iconimg + ')'"

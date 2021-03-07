@@ -20,5 +20,7 @@ export interface App {
     moving: string,
     residents: string,
     children: string,
-    animals: string
+    animals: string,
+    status: string,
+    appdate: string
 }

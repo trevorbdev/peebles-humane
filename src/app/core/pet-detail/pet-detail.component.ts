@@ -65,7 +65,7 @@ export class PetDetailComponent implements OnInit {
     this.countCollection = afs.collection<Count>('counts');
     this.countCollection.doc("applicationcount").get().subscribe((doc) => {
       this.countdata = doc.data();
-    })
+    });
     this.appCollection = afs.collection<App>('applications');
   }
 
@@ -102,7 +102,7 @@ export class PetDetailComponent implements OnInit {
       lastname: this.AppForm.controls['lastname'].value,
       email: this.AppForm.controls['email'].value,
       dln: this.AppForm.controls['dln'].value,
-      birthday: this.AppForm.controls['birthday'].value,
+      birthday: new Date(this.AppForm.controls['birthday'].value).toISOString(),
       spousefirst: this.AppForm.controls['spousefirst'].value,
       spouselast: this.AppForm.controls['spouselast'].value,
       phone: this.AppForm.controls['phone'].value,
@@ -116,7 +116,9 @@ export class PetDetailComponent implements OnInit {
       moving: this.AppForm.controls['moving'].value,
       residents: this.AppForm.controls['residents'].value,
       children: this.AppForm.controls['children'].value,
-      animals: this.AppForm.controls['animals'].value
+      animals: this.AppForm.controls['animals'].value,
+      status: 'Submitted',
+      appdate: new Date().toISOString()
     }).then((success) => {
       this._snackBar.open("Application submitted", "", {
         duration: 5000
@@ -125,9 +127,9 @@ export class PetDetailComponent implements OnInit {
       this._snackBar.open("Application submit failed", "", {
         duration: 5000
       });
-    });
-    this.countCollection.doc("applicationcount").set({
-      count: String(Number(this.countdata!.count) + 1)
     })
+      this.countCollection.doc("applicationcount").set({
+        count: String(Number(this.countdata!.count) + 1)
+      });
   }
 }

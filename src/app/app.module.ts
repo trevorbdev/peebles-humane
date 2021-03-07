@@ -39,6 +39,9 @@ import {DescriptionDialog} from './core/admin-dashboard/admin-roster/admin-roste
 import {PhotosEditDialog} from './core/admin-dashboard/admin-roster/admin-roster.component';
 import { PetDetailComponent } from './core/pet-detail/pet-detail.component';
 import { AdminAppComponent } from './core/admin-dashboard/admin-app/admin-app.component';
+import { AppArchiveComponent } from './core/admin-dashboard/app-archive/app-archive.component';
+import { RosterArchiveComponent } from './core/admin-dashboard/roster-archive/roster-archive.component';
+import { AppLookupComponent } from './core/app-lookup/app-lookup.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { AdminAppComponent } from './core/admin-dashboard/admin-app/admin-app.co
     DescriptionDialog,
     PhotosEditDialog,
     PetDetailComponent,
-    AdminAppComponent
+    AdminAppComponent,
+    AppArchiveComponent,
+    RosterArchiveComponent,
+    AppLookupComponent
   ],
   imports: [
     BrowserModule,

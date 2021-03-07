@@ -11,6 +11,10 @@ import { canActivate } from '@angular/fire/auth-guard';
 import { Observable, of, pipe, UnaryFunction } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { PetDetailComponent } from './core/pet-detail/pet-detail.component';
+import { AdminAppComponent } from './core/admin-dashboard/admin-app/admin-app.component';
+import { AppArchiveComponent } from './core/admin-dashboard/app-archive/app-archive.component';
+import { RosterArchiveComponent } from './core/admin-dashboard/roster-archive/roster-archive.component';
+import { AppLookupComponent } from './core/app-lookup/app-lookup.component';
 
 const redirectLoggedInToAdmin = () => redirectLoggedInTo(['admin']);
 
@@ -18,9 +22,13 @@ const routes: Routes = [
 {path: 'admin', component: AdminDashboardComponent, children: [
   {path: '', redirectTo: 'roster', pathMatch: 'full'},
   {path: 'roster', component: AdminRosterComponent},
-  {path: 'admins', component: AdminControlComponent}
+  {path: 'admins', component: AdminControlComponent},
+  {path: 'apps', component: AdminAppComponent},
+  {path: 'app-archive', component: AppArchiveComponent},
+  {path: 'roster-archive', component: RosterArchiveComponent}
 ]},
 {path: 'petdetail', component: PetDetailComponent},
+{path: 'app-lookup', component: AppLookupComponent},
 {path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToAdmin}},
 {path: 'adoptions', component: AdoptionsComponent,
 children: [{path: '', redirectTo: 'adoption-roster', pathMatch: 'full'},
