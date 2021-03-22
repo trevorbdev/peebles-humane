@@ -80,7 +80,8 @@ export class AppArchiveComponent implements OnInit {
         children: this.apparr[index].children,
         animals: this.apparr[index].animals,
         status: this.apparr[index].status,
-        appdate: this.apparr[index].appdate
+        appdate: this.apparr[index].appdate,
+        reason: "",
       })
       this.appsArchiveCollection.doc(this.apparr[index].id).delete();
     }

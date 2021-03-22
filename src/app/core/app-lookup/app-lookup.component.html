@@ -33,14 +33,20 @@
           <td mat-cell *matCellDef="let dataSource"> {{dataSource.status}} </td>
         </ng-container>
       
+        <!-- App Deny Reason Column -->
+        <ng-container matColumnDef="appreason">
+          <th mat-header-cell *matHeaderCellDef> Application Deny Reason </th>
+          <td mat-cell *matCellDef="let dataSource"> {{dataSource.reason}} </td>
+        </ng-container>
+
         <!-- App Date Column -->
         <ng-container matColumnDef="appdate">
           <th mat-header-cell *matHeaderCellDef> Application Date </th>
           <td mat-cell *matCellDef="let dataSource"> {{dataSource.appdate | date: 'MM-dd-YYYY'}} </td>
         </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="['appby', 'petinq', 'appstatus', 'appdate']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['appby', 'petinq', 'appstatus', 'appdate'];"></tr>
+        <tr mat-header-row *matHeaderRowDef="['appby', 'petinq', 'appstatus', 'appreason', 'appdate']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['appby', 'petinq', 'appstatus', 'appreason', 'appdate'];"></tr>
       </table>
       <br>
       <h1 *ngIf="showTables">Past Applications</h1>

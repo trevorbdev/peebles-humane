@@ -22,5 +22,6 @@ export interface App {
     children: string,
     animals: string,
     status: string,
-    appdate: string
+    appdate: string,
+    reason: string | null,
 }

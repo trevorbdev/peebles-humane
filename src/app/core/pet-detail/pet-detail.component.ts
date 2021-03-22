@@ -118,7 +118,8 @@ export class PetDetailComponent implements OnInit {
       children: this.AppForm.controls['children'].value,
       animals: this.AppForm.controls['animals'].value,
       status: 'Submitted',
-      appdate: new Date().toISOString()
+      appdate: new Date().toISOString(),
+      reason: "",
     }).then((success) => {
       this._snackBar.open("Application submitted", "", {
         duration: 5000
