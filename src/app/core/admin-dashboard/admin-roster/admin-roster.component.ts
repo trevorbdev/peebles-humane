@@ -110,6 +110,7 @@ export class AdminRosterComponent implements OnInit {
     this.description = this.petarr[index].description;
     this.weight = this.petarr[index].weight;
     this.detailedage = this.petarr[index].detailedage;
+    this.price = this.petarr[index].price;
     this.editindex = index;
   }
 
@@ -133,6 +134,7 @@ export class AdminRosterComponent implements OnInit {
     this.description = '';
     this.weight = 0;
     this.detailedage = '';
+    this.price = 0;
     this.editindex = Number(this.id);
   }
 

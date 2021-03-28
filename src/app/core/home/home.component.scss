@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+.col.intro {
+    margin: 75px;
+}
+.col.intro h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    color: #ffffff !important;
+}
+.col.intro h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff !important;
+}
+.spacer {
+    flex: 1 1 auto;
+  }
+  p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+  }
+  .row.hero {
+    background: url('/assets/img/dogbanner.jpg');
+    height: 550px;
+    width: 100%;
+  }
+  .intro.card {
+      background-color: #ea7186;
+  }
+  .mx-auto.tag {
+      width: 1200px;
+  }
+  .mx-auto.tag h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    color: #000000 !important;
+    text-align: center;
+  }
+  .mx-auto.tag h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #000000 !important;
+    text-align: center;
+  }
+  .row.services h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    color: #000000 !important;
+    text-align: center;
+  }
+  .row.services {
+      background-color: #f2f2f2;
+  }
+  .col.groom {
+      text-align: center;
+  }
+  .col.groom h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #000000 !important;
+    text-align: center;
+  }
+  .col.chip {
+    text-align: center;
+}
+.col.chip h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #000000 !important;
+  text-align: center;
+}
+.row.services .col mat-card {
+    height: 250px;
+}
+.col.vet h3 {
+    font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #000000 !important;
+  text-align: center;
+}
+.col.vet {
+    text-align: center;
+}
+.col.shots h3 {
+    font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #000000 !important;
+  text-align: center;
+}
+.col.shots {
+    text-align: center;
+}

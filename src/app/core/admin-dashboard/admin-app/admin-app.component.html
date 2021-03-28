@@ -150,11 +150,19 @@
         <td mat-cell *matCellDef="let dataSource">{{dataSource.appdate | date: 'MM-dd-YYYY'}}</td>
       </ng-container>
 
+      <!-- Payment Requested Column -->
+      <ng-container matColumnDef="billrequest">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let dataSource, let i = index;">
+          <button mat-raised-button color="primary" [disabled]="dataSource.status != 'Submitted'" (click)="payRequestApp(i)">Payment Requested</button>
+        </td>
+      </ng-container>
+
       <!-- Deny Column -->
       <ng-container matColumnDef="deny">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let dataSource, let i = index;">
-          <button mat-raised-button color="warn" [disabled]="dataSource.status != 'Submitted'" (click)="denyApp(i)">Deny</button>
+          <button mat-raised-button color="warn" [disabled]="dataSource.status != 'Payment Requested'" (click)="denyApp(i)">Deny</button>
         </td>
       </ng-container>
 
@@ -162,7 +170,7 @@
       <ng-container matColumnDef="approve">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let dataSource, let i = index;">
-          <button mat-raised-button color="mat-green" [disabled]="dataSource.status != 'Submitted'"(click)="approveApp(i)">Approve</button>
+          <button mat-raised-button color="mat-green" [disabled]="dataSource.status != 'Payment Requested'"(click)="approveApp(i)">Approve</button>
         </td>
       </ng-container>
   
@@ -175,15 +183,15 @@
       </ng-container>
   
       <tr mat-header-row
-        *matHeaderRowDef="['id', 'petid', 'event', 'fname', 'lname', 'email', 'dln', 'birthday', 'spousefirst', 'spouselast', 'phone', 'address', 'city', 'state', 'zip', 'home', 'landlord', 'hometype', 'moving', 'residents', 'children', 'animals', 'status', 'appdate', 'deny', 'approve', 'archive']">
+        *matHeaderRowDef="['id', 'petid', 'event', 'fname', 'lname', 'email', 'dln', 'birthday', 'spousefirst', 'spouselast', 'phone', 'address', 'city', 'state', 'zip', 'home', 'landlord', 'hometype', 'moving', 'residents', 'children', 'animals', 'status', 'appdate', 'billrequest', 'deny', 'approve', 'archive']">
       </tr>
       <tr mat-row
-        *matRowDef="let row; columns: ['id', 'petid', 'event', 'fname', 'lname', 'email', 'dln', 'birthday', 'spousefirst', 'spouselast', 'phone', 'address', 'city', 'state', 'zip', 'home', 'landlord', 'hometype', 'moving', 'residents', 'children', 'animals', 'status', 'appdate', 'deny', 'approve', 'archive'];">
+        *matRowDef="let row; columns: ['id', 'petid', 'event', 'fname', 'lname', 'email', 'dln', 'birthday', 'spousefirst', 'spouselast', 'phone', 'address', 'city', 'state', 'zip', 'home', 'landlord', 'hometype', 'moving', 'residents', 'children', 'animals', 'status', 'appdate', 'billrequest', 'deny', 'approve', 'archive'];">
       </tr>
   
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="27">No data matching the filter "{{input.value}}"</td>
+        <td class="mat-cell" colspan="28">No data matching the filter "{{input.value}}"</td>
       </tr>
     </table>
   

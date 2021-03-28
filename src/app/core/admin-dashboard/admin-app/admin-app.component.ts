@@ -146,6 +146,55 @@ export class AdminAppComponent implements OnInit {
     })
   }
 
+  payRequestApp(index: any) {
+    index = index + this.correctindex;
+    this.appsCollection.doc(this.apparr[index].id).set({
+      id: this.apparr[index].id,
+      petid: this.apparr[index].petid,
+      event_url: this.apparr[index].event_url,
+      firstname: this.apparr[index].firstname,
+      lastname: this.apparr[index].lastname,
+      email: this.apparr[index].email,
+      dln: this.apparr[index].dln,
+      birthday: this.apparr[index].birthday,
+      spousefirst: this.apparr[index].spousefirst,
+      spouselast: this.apparr[index].spouselast,
+      phone: this.apparr[index].phone,
+      address: this.apparr[index].address,
+      city: this.apparr[index].city,
+      state: this.apparr[index].state,
+      zip: this.apparr[index].zip,
+      home: this.apparr[index].home,
+      landlord: this.apparr[index].landlord,
+      hometype: this.apparr[index].hometype,
+      moving: this.apparr[index].moving,
+      residents: this.apparr[index].residents,
+      children: this.apparr[index].children,
+      animals: this.apparr[index].animals,
+      status: "Payment Requested",
+      appdate: this.apparr[index].appdate,
+      reason: "",
+    })
+    var petindex = Number(this.apparr[index].petid) - 1;
+    this.petsCollection.doc(String(this.apparr[index].petid)).set({
+      id: this.petarr[petindex].id,
+      name: this.petarr[petindex].name,
+      age: this.petarr[petindex].age,
+      breed: this.petarr[petindex].breed,
+      photos: this.petarr[petindex].photos,
+      sex: this.petarr[petindex].sex,
+      type: this.petarr[petindex].type,
+      status: "Pending Adoption",
+      coverimg: this.petarr[petindex].coverimg,
+      iconimg: this.petarr[petindex].iconimg,
+      description: this.petarr[petindex].description,
+      weight: this.petarr[petindex].weight,
+      price: this.petarr[petindex].price,
+      detailedage: this.petarr[petindex].detailedage,
+      adoptedby: this.apparr[index].firstname + " " + this.apparr[index].lastname,
+    })
+  }
+
   denyApp(index: any) {
     var reason = prompt("Give reason for denied application");
     if (reason != null || reason != "") {
