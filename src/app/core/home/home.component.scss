@@ -56,6 +56,7 @@
   }
   .row.services {
       background-color: #f2f2f2;
+      width: 100%;
   }
   .col.groom {
       text-align: center;
@@ -99,4 +100,7 @@
 }
 .col.shots {
     text-align: center;
+}
+html, body {
+  overflow-x: hidden !important;
 }

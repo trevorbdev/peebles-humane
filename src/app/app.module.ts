@@ -44,6 +44,8 @@ import { AppArchiveComponent } from './core/admin-dashboard/app-archive/app-arch
 import { RosterArchiveComponent } from './core/admin-dashboard/roster-archive/roster-archive.component';
 import { AppLookupComponent } from './core/app-lookup/app-lookup.component';
 import { HomeComponent } from './core/home/home.component';
+import { ServicesComponent } from './core/services/services.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { HomeComponent } from './core/home/home.component';
     AppArchiveComponent,
     RosterArchiveComponent,
     AppLookupComponent,
-    HomeComponent
+    HomeComponent,
+    ServicesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
