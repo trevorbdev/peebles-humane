@@ -20,8 +20,8 @@
   
       <!-- Breed Column -->
       <ng-container matColumnDef="event">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Calendly Event </th>
-        <td mat-cell *matCellDef="let dataSource"> <a [href]="dataSource.event_url" target="_blank">View Event</a></td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Calendly Event ID</th>
+        <td mat-cell *matCellDef="let dataSource">{{dataSource.event_uuid}}</td>
       </ng-container>
   
       <!-- Age Column -->

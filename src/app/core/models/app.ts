@@ -1,7 +1,7 @@
 export interface App {
     id: string,
     petid: string | undefined,
-    event_url: string,
+    event_uuid: string,
     firstname: string,
     lastname: string,
     email: string,

@@ -10,4 +10,6 @@
   <mat-icon *ngIf="auth.user | async as user" (click)="logout()" class="icon">logout</mat-icon>
 </mat-toolbar>
 <router-outlet></router-outlet>
+<div class="mt-4">
 <app-footer></app-footer>
+</div>
