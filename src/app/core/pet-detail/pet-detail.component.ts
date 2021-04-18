@@ -72,7 +72,7 @@ export class PetDetailComponent implements OnInit {
   ngOnInit(): void {
     window.addEventListener('message', (e) => {
       if (e.data.event === 'calendly.event_scheduled') {
-        this.submitForm(e.data.payload.event.uuid);
+        this.submitForm(e.data.payload.event.uri.split("/").pop());
       }
     })
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AppComponent {
 
-  constructor(public auth: AngularFireAuth) {
+  constructor(public auth: AngularFireAuth, public router: Router) {
   }
   title = 'peebles-humane';
 

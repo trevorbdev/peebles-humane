@@ -59,7 +59,7 @@ export class AppArchiveComponent implements OnInit {
       this.appsCollection.doc(this.apparr[index].id).set({
         id: this.apparr[index].id,
         petid: this.apparr[index].petid,
-        event_url: this.apparr[index].event_url,
+        event_uuid: this.apparr[index].event_uuid,
         firstname: this.apparr[index].firstname,
         lastname: this.apparr[index].lastname,
         email: this.apparr[index].email,
