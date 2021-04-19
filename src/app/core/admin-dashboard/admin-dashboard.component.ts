@@ -33,8 +33,10 @@ export class AdminDashboardComponent implements OnInit {
         this.admin = true;
       }
       else {
+        if (this.admin != true) {
         this.admin = false;
         this.router.navigate(['/login']);
+        }
       }
     })
     })
@@ -43,6 +45,7 @@ export class AdminDashboardComponent implements OnInit {
 
   logout() {
     this.auth.signOut();
+    this.admin = false;
   }
 
 }
