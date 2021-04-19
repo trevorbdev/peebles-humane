@@ -28,13 +28,15 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.admins.forEach((admin) => {
     this.auth.currentUser.then((user) => {
-      if (admin[0].uid == user?.uid) {
+      admin.forEach((administrator) => {
+      if (administrator.uid == user?.uid) {
         this.admin = true;
       }
       else {
         this.admin = false;
         this.router.navigate(['/login']);
       }
+    })
     })
   });
   }
