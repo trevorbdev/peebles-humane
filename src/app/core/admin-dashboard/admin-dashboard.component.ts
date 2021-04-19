@@ -29,7 +29,7 @@ export class AdminDashboardComponent implements OnInit {
     this.admins.forEach((admin) => {
     this.auth.currentUser.then((user) => {
       admin.forEach((administrator) => {
-      if (administrator.uid == user?.uid) {
+      if (administrator.uid === user?.uid) {
         this.admin = true;
       }
       else {
