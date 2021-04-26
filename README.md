@@ -2,25 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
 
-## Development server
+Before downloading the project, make sure you have nodejs installed from https://nodejs.org/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After downloading the project, use the command line to go to the peebles-humane folder and run "npm install"
 
-## Code scaffolding
+After running "npm install", run "ng serve" which will serve the app on http://localhost:4200/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To login to the admin dashboard, go to http://localhost:4200/login after running "ng serve"
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Other than these steps, there should be no other steps to perform for proper running of the application, since the database is in the cloud, a npm package handles the connections
 
 ## Further help
 
